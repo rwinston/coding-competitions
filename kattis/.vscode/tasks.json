@@ -10,8 +10,8 @@
                 "/Zi",
                 "/std:c++17",
                 "/Fe:",
-                "accesskey.exe",
-                "accesskey.cpp"
+                "verci.exe",
+                "verci.cpp"
             ],
             "group": {
                 "kind": "build",
