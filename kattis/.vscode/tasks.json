@@ -10,8 +10,8 @@
                 "/Zi",
                 "/std:c++17",
                 "/Fe:",
-                "verci.exe",
-                "verci.cpp"
+                "statistics.exe",
+                "statistics.cpp"
             ],
             "group": {
                 "kind": "build",
