@@ -10,8 +10,8 @@
                 "/Zi",
                 "/std:c++17",
                 "/Fe:",
-                "estimates.exe",
-                "estimates.cpp"
+                "easiest.exe",
+                "easiest.cpp"
             ],
             "group": {
                 "kind": "build",
