@@ -10,8 +10,8 @@
                 "/Zi",
                 "/std:c++17",
                 "/Fe:",
-                "sum_problem.exe",
-                "sum_problem.cpp"
+                "segments.exe",
+                "segments.cpp"
             ],
             "group": {
                 "kind": "build",
