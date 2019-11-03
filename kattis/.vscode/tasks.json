@@ -10,8 +10,8 @@
                 "/Zi",
                 "/std:c++17",
                 "/Fe:",
-                "segments.exe",
-                "segments.cpp"
+                "prozor.exe",
+                "prozor.cpp"
             ],
             "group": {
                 "kind": "build",
