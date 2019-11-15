@@ -6,8 +6,7 @@
 #include <iterator>
 #include <cmath>
 
-int sumdigits(int n)
-{
+int sumdigits(int n) {
     int s = 0;
     while (n > 0)
     {
