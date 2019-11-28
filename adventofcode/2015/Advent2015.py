@@ -22,9 +22,9 @@ class Day5:
                 and (re.search(r'([a-z])\1', s) is not None)
                 and (re.search(r'(ab|cd|pq|xy)', s) is None))
 
-    def nicer(self,s):
+    def nicer(self, s):
         return ((re.search(r'([a-z]{2}).*\1', s) is not None)
-            and (re.search(r'([a-z])[a-z]\1', s) is not None))
+                and (re.search(r'([a-z])[a-z]\1', s) is not None))
 
     def solve_part1(self, datafile):
         count = 0
@@ -40,4 +40,51 @@ class Day5:
             for line in fp:
                 if self.nicer(line):
                     count = count + 1
+        return count
+
+
+class Day6:
+    grid = [[0 for x in range(1000)] for x in range(1000)]
+    ops = {}
+
+    def solve_part1(self, datafile):
+        self.ops['turn on'] = lambda x: 1
+        self.ops['turn off'] = lambda x: 0
+        self.ops['toggle'] = lambda x: not (x)
+
+        with open(datafile) as fp:
+            for line in fp:
+                self.process(line)
+        return self.count_lights()
+
+    def solve_part2(self, datafile):
+        self.ops['turn on'] = lambda x: x + 1
+        self.ops['turn off'] = lambda x: max(0, x - 1)
+        self.ops['toggle'] = lambda x: x + 2
+
+        with open(datafile) as fp:
+            for line in fp:
+                self.process(line)
+        return self.count_lights()
+
+    def process(self, line):
+        m = re.match(r'(toggle|turn on|turn off) (\d+),(\d+) through (\d+),(\d+)$', line)
+        if m:
+            op = self.ops[m.group(1)]
+            x1 = int(m.group(2))
+            y1 = int(m.group(3))
+            x2 = int(m.group(4))
+            y2 = int(m.group(5))
+            self.modify_grid(op, x1, y1, x2, y2)
+
+    def modify_grid(self, op, x1, y1, x2, y2):
+        for i in range(x1, x2 + 1):
+            for j in range(y1, y2 + 1):
+                self.grid[i][j] = op(self.grid[i][j])
+
+    def count_lights(self):
+        count = 0
+        for i in range(1000):
+            for j in range(1000):
+                count = count + self.grid[i][j]
         return count
