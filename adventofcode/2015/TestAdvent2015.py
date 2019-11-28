@@ -1,5 +1,5 @@
 import unittest
-from Advent2015 import Day4,Day5
+from Advent2015 import Day4,Day5,Day6
 
 
 class Day4TestCase(unittest.TestCase):
@@ -41,6 +41,22 @@ class Day5TestCase(unittest.TestCase):
     def test_part2(self):
         puzzle = Day5()
         print(puzzle.solve_part2('data/day5.dat'))
+
+
+class Day6TestCase(unittest.TestCase):
+    def test_part1(self):
+        puzzle = Day6()
+        print(puzzle.solve_part1('data/day6.dat'))
+
+    def test_modify(self):
+        puzzle = Day6()
+        puzzle.modify_grid(lambda x:x+2,0,0,999,999)
+        self.assertEqual(2000000, puzzle.count_lights())
+
+    def test_part2(self):
+        puzzle = Day6()
+        print(puzzle.solve_part2('data/day6.dat'))
+
 
 if __name__ == '__main__':
     unittest.main()
