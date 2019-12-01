@@ -1,6 +1,5 @@
 import unittest
-from Advent2015 import Day4,Day5,Day6
-
+from adventofcode import Advent2015
 
 class Day4TestCase(unittest.TestCase):
     def test_solve(self):
@@ -57,6 +56,29 @@ class Day6TestCase(unittest.TestCase):
         puzzle = Day6()
         print(puzzle.solve_part2('data/day6.dat'))
 
+
+class Day7TestCase(unittest.TestCase):
+
+    def test_part1(self):
+        puzzle = Day7()
+        puzzle.solve_part1('data/day7_test.dat')
+        self.assertEqual(72, puzzle.get_value('d'))
+        self.assertEqual(507, puzzle.get_value('e'))
+        self.assertEqual(492, puzzle.get_value('f'))
+        self.assertEqual(114, puzzle.get_value('g'))
+        self.assertEqual(65412, puzzle.get_value('h'))
+        self.assertEqual(65079, puzzle.get_value('i'))
+        self.assertEqual(123, puzzle.get_value('x'))
+        self.assertEqual(456, puzzle.get_value('y'))
+
+    def test_solve_part1(self):
+        puzzle = Day7()
+        puzzle.solve_part1('data/day7.dat')
+        print(puzzle.get_value('a'))
+
+    def test_solve_part2(self):
+        puzzle = Day7()
+        print(puzzle.solve_part2('data/day7.dat'))
 
 if __name__ == '__main__':
     unittest.main()
