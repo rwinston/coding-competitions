@@ -24,3 +24,38 @@ class Day1:
         if fuel == 0:
             return 0
         return fuel + self.calc_total_fuel(fuel)
+
+class Day2:
+    slots = []
+    data = []
+
+    def __init__(self, data):
+        self.data = data.split(',')
+        self.slots = [None] * len(self.data)
+        self.reset()
+
+    def reset(self):
+        for i, x in enumerate(self.data):
+            d = int(x)
+            self.slots[i] = d
+
+    def solve_part1(self):
+        self.run_computer()
+
+    def run_computer(self):
+        commands = self.slots
+        for i in range(0, len(commands), 4):
+            cmd = commands[i]
+            if cmd == 1:
+                self.slots[commands[i + 3]] = self.slots[commands[i + 1]] + self.slots[commands[i + 2]]
+            elif cmd == 2:
+                self.slots[commands[i + 3]] = self.slots[commands[i + 1]] * self.slots[commands[i + 2]]
+            elif cmd == 99:
+                break
+
+    def get_state(self, i):
+        return self.slots[i]
+
+    def set_state(self, i, x):
+        self.slots[i] = x
+
