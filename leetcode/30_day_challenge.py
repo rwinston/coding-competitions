@@ -1,3 +1,109 @@
+# Day 21
+class Solution:
+    def subarraySum(self, nums: List[int], k: int) -> int:
+        map = defaultdict(int)
+        map[0]=1
+        result=0
+        sum=0
+        
+        for n in nums:
+            sum += n
+            if sum-k in map:
+                result += map[sum-k]
+            map[sum] = map[sum]+1            
+        
+        return(result)
+        
+        
+# Day 20
+class Solution:
+    def bstFromPreorder(self, preorder: List[int]) -> TreeNode:
+        if not preorder:
+            return None
+        root = TreeNode(preorder[0])
+        i = 1
+        while i<len(preorder) and  preorder[i] < root.val:
+            i+=1
+        root.left = self.bstFromPreorder(preorder[1:i])
+        root.right = self.bstFromPreorder(preorder[i:])
+        return root
+                
+
+# Day 19
+class Solution:
+       def search(self, nums: List[int], target: int) -> int:
+        def helper(l,r):
+            if l > r:
+                return -1
+            m = (r+l)//2
+            if nums[m] == target:
+                return m
+            if nums[l] <= target < nums[m] or (nums[m] <= nums[r]  and not nums[m] < target <= nums[r]):
+                return helper(l,m-1)
+            else: 
+                return helper(m+1, r)
+        return helper(0,len(nums)-1)
+       
+        
+
+#Day 18
+class Solution:
+    def minPathSum(self, grid: List[List[int]]) -> int:
+        if len(grid) <= 0 or grid is None:
+            return 0
+        rows = len(grid)
+        cols = len(grid[0])
+        
+        for r in range(rows):
+            for c in range(cols):
+                if r==0 and c==0: # We just want to skip the top-left corner of the grid
+                    continue
+                if r-1<0: # Cases for elements in top row
+                    grid[r][c] = grid[r][c] + grid[r][c-1]  
+                elif c-1<0: # Cases for elements in leftmost column
+                    grid[r][c] = grid[r][c] + grid[r-1][c]  
+                else: # Normal cell
+                    grid[r][c] = grid[r][c] + min(grid[r-1][c], grid[r][c-1])               
+        
+        return grid[rows-1][cols-1] # We have got the minimum path accumaled at the bottom-right corner, just return this
+
+# Day 17
+class Solution:
+    def numIslands(self, grid: List[List[str]]) -> int:
+        islands = 0
+        land = []
+        
+        for i,row in enumerate(grid):
+            for j,col in enumerate(row):
+                if grid[i][j]=='1':
+                    islands = islands+1
+                    land.append((i,j))
+                    while land:
+                        coord = land.pop()
+                        
+                        x=coord[0]
+                        y=coord[1]
+                       
+                        grid[x][y] = '0'
+                        
+                        if x>0 and grid[x-1][y]!='0':
+                            land.append((x-1,y))
+                        if x<len(grid)-1 and grid[x+1][y]!='0':
+                            land.append((x+1,y))
+                        if y>0 and grid[x][y-1]!='0':
+                            land.append((x,y-1))
+                        if y<len(grid[0])-1 and grid[x][y+1]!='0':
+                            land.append((x,y+1))
+                        
+                        
+                
+        return(islands)
+    
+
+
+# Day 16
+
+
 # Day 15
 class Solution:
     def productExceptSelf(self, nums: List[int]) -> List[int]:
