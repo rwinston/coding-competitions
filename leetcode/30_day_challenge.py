@@ -1,3 +1,86 @@
+# May day 7
+class Solution:
+    def isCousins(self, root: TreeNode, x: int, y: int) -> bool:
+        def findLevel(root:TreeNode, v, level):
+            if root is None:
+                return -1
+            
+            if (root.val==v):
+                return(level)
+            
+            l = findLevel(root.right, v, level+1)    
+            
+            if l !=-1:    
+                return l
+            
+            return findLevel(root.left, v, level+1)
+        
+        def findParent(root:TreeNode, v, p):
+            if root is None:
+                return -1
+            
+            if (root.val==v):
+                return(p)
+            
+            p = findParent(root.right, v, root.val)    
+            
+            if p !=-1:    
+                return p            
+            return findParent(root.left, v, root.val)    
+        
+        
+       
+        return (findLevel(root, x, -1)==findLevel(root, y, -1)) and (findParent(root, x, -1)!=findParent(root, y, -1))
+    
+# May Day 6
+class Solution:
+    def majorityElement(self, nums: List[int]) -> int:
+        lim = floor(len(nums)/2)
+        map = defaultdict(int)
+        for num in nums:
+            map[num] += 1
+            if map[num]>lim:
+                return(num)
+            
+                
+# May Day 5
+class Solution:
+    def firstUniqChar(self, s: str) -> int:
+        m = OrderedDict()
+        d = []
+        for i,char in enumerate(s):
+            if not char in m:
+                m[char]=i
+            else:
+                d.append(char)
+              
+        for c in d:
+            if c in m:
+                del m[c]
+                
+        return -1 if len(m)==0 else m.popitem(False)[1]
+
+# May Day 4
+class Solution:
+    def findComplement(self, num: int) -> int:
+        t = int(num)
+        ans = int(0)
+        i = int(0)
+        while t>0:
+            ans += (1-(t&0x1))*(2**i)
+            t >>= 1
+            i += 1 
+        
+        return(ans)
+            
+        
+  
+    
+
+        
+        
+            
+        
 # Day 21
 class Solution:
     def subarraySum(self, nums: List[int], k: int) -> int:
