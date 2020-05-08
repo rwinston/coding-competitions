@@ -1,3 +1,24 @@
+# May day 8
+class Solution:
+    def checkStraightLine(self, coordinates: List[List[int]]) -> bool:
+        if (len(coordinates)==2):
+            return(True)
+        
+        distances = []
+        for i in range(1,len(coordinates)):
+            rise=(coordinates[i][1]-coordinates[0][1])
+            run=(coordinates[i][0]-coordinates[0][0])
+            if run==0:
+                return(False)
+            d = rise/run
+            distances.append(d)
+                
+        for i in range(1, len(distances)):
+            if distances[i]!=distances[i-1]:
+                return(False)
+        
+        return(True)
+
 # May day 7
 class Solution:
     def isCousins(self, root: TreeNode, x: int, y: int) -> bool:
