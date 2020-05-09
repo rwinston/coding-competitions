@@ -1,3 +1,16 @@
+# May 9
+class Solution:
+    def isPerfectSquare(self, num: int) -> bool:
+        if num==1:
+            return(True)
+        guess=int(num/2)
+        for i in range(1,100):
+            newguess = 0.5*(guess+num/guess)
+            if int(newguess)*int(newguess)==num:
+                return(True)
+            guess=newguess
+        return(False)
+
 # May day 8
 class Solution:
     def checkStraightLine(self, coordinates: List[List[int]]) -> bool:
