@@ -1,3 +1,25 @@
+# May 10
+class Solution:
+    def findJudge(self, N: int, trust: List[List[int]]) -> int:
+        trustMap = defaultdict(list)
+        trustCount = defaultdict(int)
+        for t in trust:
+            trustMap[t[0]].append(t[1])
+            if not t[1] in trustMap:
+                trustMap[t[1]] = []
+            trustCount[t[1]]+=1
+            
+        
+        if len(trustMap)==0 and N==1:
+            return(N)
+        
+        for kv in trustCount.items():
+            if kv[1]==len(trustMap.keys())-1 and len(trustMap[kv[0]])==0:
+                return kv[0]
+        
+        return -1
+    
+    
 # May 9
 class Solution:
     def isPerfectSquare(self, num: int) -> bool:
