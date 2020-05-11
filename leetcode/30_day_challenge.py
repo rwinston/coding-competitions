@@ -152,12 +152,42 @@ class Solution:
         
         return(ans)
             
-        
-  
-    
 
+class FirstUnique:
+    
+    def __init__(self, nums: List[int]):
+        self.d = OrderedDict()  
+        self.nonunique = []
+        for num in nums:
+            self.add(num)
+
+    def showFirstUnique(self) -> int:
+        if len(self.d)==0:
+            return(-1)
+        return(next(iter(self.d)))
+
+    def add(self, value: int) -> None:
+        if value in self.d:
+            del self.d[value]
+            self.nonunique.append(value)
+        elif not value in self.nonunique:
+            self.d[value]=value
+
+# Max Path Sum
+    class Solution:
+      def maxPathSum(self, root):
+        self.max = float('-inf')
+        def get_sum(root):
+            if root is None:
+                return 0
+            else:
+                ls = max(get_sum(root.left), 0)
+                rs = max(get_sum(root.right), 0)
+                self.max = max(self.max, ls + rs + root.val)
+                return max(ls, rs, 0) + root.val
         
-        
+        get_sum(root)
+        return self.max
             
         
 # Day 21
