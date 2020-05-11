@@ -1,3 +1,26 @@
+# May 11
+class Solution:
+    def floodFill(self, image: List[List[int]], sr: int, sc: int, newColor: int) -> List[List[int]]:
+            visited = {}
+            def paint(i,j,color):
+                image[i][j]=newColor
+                if (i,j) in visited:
+                    return
+                visited[(i,j)]=True
+                if i>0 and image[i-1][j]==color:
+                    paint(i-1,j,color)
+                if i<len(image)-1 and image[i+1][j]==color:
+                    paint(i+1,j,color)
+                if j>0 and image[i][j-1]==color:
+                    paint(i,j-1,color)
+                if j<len(image[0])-1 and image[i][j+1]==color:
+                    paint(i,j+1,color)
+               
+                
+            paint(sr,sc,image[sr][sc])
+            return(image)
+                    
+                
 # May 10
 class Solution:
     def findJudge(self, N: int, trust: List[List[int]]) -> int:
