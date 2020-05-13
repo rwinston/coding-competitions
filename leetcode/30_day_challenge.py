@@ -1,3 +1,22 @@
+# May 12
+class Solution:
+    def removeKdigits(self, num: str, k: int) -> str:
+        if k>=len(num):
+            return "0"
+        
+        s = num
+        for i in range(k):
+            for i,n in enumerate(s):
+                if i==len(s)-1:
+                    s=s[:i]
+                    break
+                if int(s[i])>int(s[i+1]):
+                    s=s[:i]+s[i+1:]    
+                    break
+        
+        return(str(int(s)))
+                
+        
 # May 11
 class Solution:
     def floodFill(self, image: List[List[int]], sr: int, sc: int, newColor: int) -> List[List[int]]:
