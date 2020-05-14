@@ -1,3 +1,49 @@
+# Day 13
+class Node: 
+    def __init__(self):
+        self.children = {}
+        self.word = False
+            
+
+class Trie:
+    
+    def searchTrie(self, node,word,prefixOnly) -> bool:
+        for char in word:
+            if not char in node.children:
+                return(False)
+            node=node.children[char]
+        return node != None and (True if prefixOnly else node.word)
+    
+    def insertTrie(self,node,word) -> None:
+        for char in word:
+            if not char in node.children:
+                node.children[char] = Node()
+            node=node.children[char]
+        node.word = True
+            
+    def __init__(self):
+        """
+        Initialize your data structure here.
+        """
+        self.root = Node()
+
+    def insert(self, word: str) -> None:
+        """
+        Inserts a word into the trie.
+        """
+        self.insertTrie(self.root,word)
+    
+    def search(self, word: str) -> bool:
+        return(self.searchTrie(self.root, word, False))
+
+    def startsWith(self, prefix: str) -> bool:
+        """
+        Returns if there is any word in the trie that starts with the given prefix.
+        """ 
+        return(self.searchTrie(self.root, prefix, True))
+        
+
+
 # May 12
 class Solution:
     def removeKdigits(self, num: str, k: int) -> str:
