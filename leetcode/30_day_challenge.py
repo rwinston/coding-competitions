@@ -1,3 +1,31 @@
+# Day 29
+class Solution:
+    def countBits(self, num: int) -> List[int]:
+        def trailingOnes(i):
+            t = int(i)
+            ones = 0
+            while (t>0):
+                if t & 1:
+                    ones+=1
+                else:
+                     break
+                t=int(t/2)
+            return(ones)
+            
+        ones = [0]
+        lastBits = 0
+        delta = 0
+        for i in range(1,num+1):
+            # odd
+            if i % 2 == 1: 
+                lastBits += 1
+                delta = trailingOnes(i)-1
+            else:
+                lastBits -= delta
+            ones.append(lastBits)
+                
+        return(ones)
+        
 # Day 13
 class Node: 
     def __init__(self):
