@@ -1,3 +1,19 @@
+#June Day 1
+class Solution:
+    def invertTree(self, root: TreeNode) -> TreeNode:
+        def swap(node): 
+            if node is None:
+                return
+            swap(node.left)
+            swap(node.right)
+            
+            tmp = node.left
+            node.left=node.right
+            node.right=tmp
+        
+        swap(root)
+        return(root)
+
 # Day 29
 class Solution:
     def countBits(self, num: int) -> List[int]:
