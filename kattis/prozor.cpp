@@ -88,6 +88,6 @@ int main(int argc, char *argv[]) {
       }
    }
 
-   std::cout << whacks << std::endl;
+   std::cout << whacks << std::endl;   
    dump_grid_and_racket(grid, r, s, mr, mc,k);
 }

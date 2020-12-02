@@ -10,8 +10,8 @@
                 "/Zi",
                 "/std:c++17",
                 "/Fe:",
-                "prozor.exe",
-                "prozor.cpp"
+                "pop.exe",
+                "pop.cpp"
             ],
             "group": {
                 "kind": "build",
