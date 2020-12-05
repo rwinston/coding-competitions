@@ -2,12 +2,14 @@ data:"\n"vs data;
 
 /Part 1
 calculateSeat:{[t]
-row:first{c:(floor(count x)%2);?[y="F";c#x;(c)_x]}/[til 128;-3_t];
-seat:first{c:(floor(count x)%2);?[y="L";c#x;(c)_x]}/[til 8;-3#t];
+f:{c:(floor(count x)%2);?[y=z;c#x;(c)_x]};
+row:f/[til 128;-3_t;"F"];
+seat:f/[til 8;-3#t;"L"];
 (row*8)+seat
-} 
+}; 
 
+/ Part 1
+seats:raze calculateSeat each data;
 / Part 2
-seats:calculateSeat each data;
-({(min x)+til(1+(max x)-(min x))} seats) except seats
+first({(min x)+til(1+(max x)-(min x))} seats) except seats
 
