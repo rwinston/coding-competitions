@@ -1,9 +1,7 @@
 #!/usr/bin/perl
 use strict;
-use Data::Dumper;
 
 my $valid = 0;
-
 foreach my $line (<STDIN>) {
         chomp($line);
         my @parts = ($line =~ /^(\d+)\-(\d+) ([a-z]): (\S+)$/g);
