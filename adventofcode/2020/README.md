@@ -7,3 +7,5 @@
 **Day 4** - JavaScript
 
 **Day 5** - Q
+
+**Day 6** - Ruby
