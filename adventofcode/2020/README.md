@@ -9,3 +9,5 @@
 **Day 5** - Q
 
 **Day 6** - Ruby
+
+**Day 7** - Python
