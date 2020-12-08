@@ -14,7 +14,7 @@ Instruction convert(const std::string& str) {
     else return NOP;
 }
 
-bool run(const std::vector<std::pair<Instruction, int>> instructions, std::vector<bool> executed) {
+bool run(const std::vector<std::pair<Instruction, int>>& instructions, std::vector<bool> executed) {
     int pc = 0, acc = 0;  
     while (pc < instructions.size() && !executed[pc]) {
         auto instruction = instructions[pc];
@@ -53,13 +53,11 @@ int main(int argc, char* argv[]) {
     for (int i =0; i < instructions.size(); ++i) {
         Instruction opcode = instructions[i].first;
         instructions[i].first = (opcode ==  JMP ? NOP : opcode==NOP ? JMP : opcode);
-        std::cout << "Changed " << opcode <<  " to " << instructions[i].first << std::endl; 
         bool loop = run(instructions, executed);
         if (!loop) {
             std::cout << " Found non-looping solution\n";
             return 0;
         }
-
         instructions[i].first = opcode;
     }
 
