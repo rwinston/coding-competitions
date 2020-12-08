@@ -11,3 +11,5 @@
 **Day 6** - Ruby
 
 **Day 7** - Python
+
+**Day 8** - C++
