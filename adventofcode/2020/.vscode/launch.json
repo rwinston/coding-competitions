@@ -5,6 +5,13 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "type": "java",
+            "name": "CodeLens (Launch) - Day9",
+            "request": "launch",
+            "mainClass": "Day9",
+            "projectName": "2020_ea712949"
+        },
+        {
             "name": "cl.exe - Build and debug active file",
             "type": "cppvsdbg",
             "request": "launch",
