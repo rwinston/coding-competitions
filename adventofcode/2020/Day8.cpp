@@ -4,14 +4,14 @@
 #include <vector>
 #include <utility>
 
-enum Instruction {
+enum class Instruction : int {
     NOP, ACC, JMP
 };
 
 Instruction convert(const std::string& str) {
-    if (str == "acc") return ACC;
-    else if(str == "jmp") return JMP;
-    else return NOP;
+    if (str == "acc") return Instruction::ACC;
+    else if(str == "jmp") return Instruction::JMP;
+    else return Instruction::NOP;
 }
 
 bool run(const std::vector<std::pair<Instruction, int>>& instructions, std::vector<bool> executed) {
@@ -21,13 +21,13 @@ bool run(const std::vector<std::pair<Instruction, int>>& instructions, std::vect
         executed[pc] = true;
 
         switch(instruction.first) {
-            case NOP:
+            case Instruction::NOP:
                 pc++;
                 break;
-            case JMP:
+            case Instruction::JMP:
                 pc = pc + instruction.second;
                 break;
-            case ACC:
+            case Instruction::ACC:
                 acc += instruction.second;
                 pc++;
                 break;
@@ -52,7 +52,7 @@ int main(int argc, char* argv[]) {
     int i = 0;
     for (int i =0; i < instructions.size(); ++i) {
         Instruction opcode = instructions[i].first;
-        instructions[i].first = (opcode ==  JMP ? NOP : opcode==NOP ? JMP : opcode);
+        instructions[i].first = (opcode ==  Instruction::JMP ? Instruction::NOP : opcode==Instruction::NOP ? Instruction::JMP : opcode);
         bool loop = run(instructions, executed);
         if (!loop) {
             std::cout << " Found non-looping solution\n";
