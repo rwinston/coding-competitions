@@ -30,6 +30,8 @@ def part2(filename):
         sum+=int(r[0]+r[-1])
 
     print(sum)
-    
-# 29, 83, 13, 24, 42, 14, and 76
+
+
+
+
 print(part2('2023/day1.dat')) 
